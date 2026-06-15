@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settings · Last Survivor</title>
+  <link rel="stylesheet" href="css/page.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="card">
+      <span class="eyebrow">CONTROL CENTER</span>
+      <h1>SETTINGS</h1>
+      <p>The main menu remains English. The selected language is applied to the story level, subtitles, objectives, and cinematic narration.</p>
+
+      <div class="rows">
+        <div class="setting">
+          <label>Game Language
+            <select id="language">
+              <option value="en">English</option>
+              <option value="ar">العربية</option>
+            </select>
+          </label>
+          <small>Changes the language inside all story chapters.</small>
+        </div>
+        <div class="setting">
+          <label>Master Volume <span class="range-row"><input id="master" type="range" min="0" max="100"><output id="masterVal">80%</output></span></label>
+          <small>Controls the overall loudness of menu and gameplay.</small>
+        </div>
+        <div class="setting">
+          <label>SFX Volume <span class="range-row"><input id="sfx" type="range" min="0" max="100"><output id="sfxVal">78%</output></span></label>
+          <small>Weapon shots, hatchet swings, zombie sounds, generator cues, and interface effects.</small>
+        </div>
+        <div class="setting">
+          <label>Ambience Volume <span class="range-row"><input id="ambience" type="range" min="0" max="100"><output id="ambienceVal">62%</output></span></label>
+          <small>Menu music, cinematic bed, rain, distant noise, and environment atmosphere.</small>
+        </div>
+        <div class="setting">
+          <label>Graphics Quality
+            <select id="graphics">
+              <option>Low</option><option>Medium</option><option selected>High</option><option>Ultra</option>
+            </select>
+          </label>
+          <small>Saves the preferred visual preset for later graphics integration.</small>
+        </div>
+        <div class="setting progress-reset">
+          <label>Chapter Progress <strong id="progressStatus">CHECKING…</strong></label>
+          <small>Reset the saved chapter completion and checkpoint data when you want a completely fresh replay.</small>
+          <button id="resetProgress" class="danger-btn" type="button">RESET CHAPTER SAVES</button>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="btn primary" href="index.html">BACK TO CHAPTERS</a>
+        <a class="btn" href="Night-one.html">PLAY NIGHT ONE</a><a class="btn" href="Chapter-two.html">PLAY CHAPTER TWO</a><a class="btn" href="credits.html">CREDITS</a>
+      </div>
+      <div id="settingsNotice" class="notice">Your choices are saved inside this browser.</div>
+    </section>
+  </main>
+  <script src="js/settings.js"></script>
+</body>
+</html>

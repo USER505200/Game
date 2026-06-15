@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#060708">
+  <title>Last Survivor</title>
+  <link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+  <main class="menu-shell horror-home">
+    <div class="bg-fade"></div>
+    <div class="noise"></div>
+
+    <section class="left-panel">
+      <div class="topline"><span class="live-dot"></span><span>SERVER ONLINE</span></div>
+
+      <div class="brand-block">
+        <small>SEASON 01 · THE OUTBREAK</small>
+        <h1>LAST <span>SURVIVOR</span></h1>
+        <p>ZOMBIE WAR</p>
+      </div>
+
+      <nav class="menu-grid" aria-label="Main menu">
+        <button class="menu-btn primary" id="playBtn" type="button">
+          <span class="menu-icon">▶</span>
+          <span class="menu-copy"><small>SELECT STORY CHAPTER</small><strong>PLAY</strong></span>
+          <span class="menu-arrow">›</span>
+        </button>
+        <a class="menu-btn" href="store.html">
+          <span class="menu-icon">▣</span>
+          <span class="menu-copy"><small>WEAPONS & SKINS</small><strong>STORE</strong></span>
+          <span class="menu-arrow">›</span>
+        </a>
+        <a class="menu-btn" href="multiplayer.html">
+          <span class="menu-icon">◉</span>
+          <span class="menu-copy"><small>CO-OP LOBBY</small><strong>MULTIPLAYER</strong></span>
+          <span class="menu-arrow">›</span>
+        </a>
+        <a class="menu-btn" href="settings.html">
+          <span class="menu-icon">⚙</span>
+          <span class="menu-copy"><small>AUDIO · LANGUAGE · PROGRESS</small><strong>SETTINGS</strong></span>
+          <span class="menu-arrow">›</span>
+        </a>
+        <a class="menu-btn" href="exit.html">
+          <span class="menu-icon">⎋</span>
+          <span class="menu-copy"><small>LEAVE THE MENU</small><strong>EXIT</strong></span>
+          <span class="menu-arrow">›</span>
+        </a>
+      </nav>
+
+      <div class="tagline-card">
+        <span class="label">ACTIVE BRIEF</span>
+        <h2>THE SIGNAL IS STILL OUT THERE.</h2>
+        <p>Choose a chapter, enter the district, and survive the outbreak.</p>
+      </div>
+
+      <footer class="menu-footer">
+        <span id="audioHint">CLICK ONCE TO ENABLE MENU AUDIO</span>
+        <b>v0.9.0</b>
+      </footer>
+    </section>
+
+    <section class="right-panel" aria-hidden="true">
+      <div class="scene-caption"><span>WARD 7</span><strong>INFECTED DETECTED</strong></div>
+    </section>
+  </main>
+
+  <section id="chapterModal" class="chapter-modal hidden" aria-hidden="true">
+    <div class="chapter-backdrop" data-close-chapters></div>
+    <article class="chapter-window" role="dialog" aria-modal="true" aria-labelledby="chapterTitle">
+      <header>
+        <div><small>STORY MODE</small><h2 id="chapterTitle">SELECT CHAPTER</h2></div>
+        <button class="close-chapters" type="button" data-close-chapters aria-label="Close">×</button>
+      </header>
+      <div class="chapter-list">
+        <section class="chapter-card available">
+          <div class="chapter-number">01</div>
+          <div class="chapter-info">
+            <small>THE BLACK SIGNAL</small>
+            <h3>NIGHT ONE</h3>
+            <p>Restore the district transmitter and survive the first infected wave.</p>
+            <div class="chapter-meta"><span id="chapterOneStatus">AVAILABLE</span><span id="chapterOneCheckpoint">NEW GAME</span></div>
+          </div>
+          <a id="chapterOnePlay" class="chapter-action" href="Night-one.html">START</a>
+        </section>
+        <section id="chapterTwoCard" class="chapter-card locked">
+          <div class="chapter-number">02</div>
+          <div class="chapter-info">
+            <small>SAINT MERCY</small>
+            <h3>NIGHT TWO</h3>
+            <p>Drive to Saint Mercy Hospital, enter the lower ward, and trace the signal beneath the quarantine floor.</p>
+            <div class="chapter-meta"><span id="chapterTwoStatus">LOCKED</span><span id="chapterTwoCheckpoint">COMPLETE CHAPTER 01</span></div>
+          </div>
+          <a id="chapterTwoPlay" class="chapter-action disabled" href="Chapter-two.html" aria-disabled="true">LOCKED</a>
+        </section>
+      </div>
+      <footer>Completed chapters are marked here. Reset chapter saves from Settings to start fresh.</footer>
+    </article>
+  </section>
+
+  <script src="js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050608">
+  <title>Last Survivor — Chapter Two</title>
+  <link rel="stylesheet" href="css/chapter-two.css">
+</head>
+<body>
+  <canvas id="gameCanvas" tabindex="0" aria-label="Chapter Two 3D game"></canvas>
+
+  <div id="loading" class="loading">
+    <div class="loading-card">
+      <small>LAST SURVIVOR</small>
+      <h1>SAINT MERCY</h1>
+      <div class="loadbar"><i id="loadProgress"></i></div>
+      <p id="loadText">Loading the hospital…</p>
+      <b id="loadDetail">This chapter uses large 3D models. Please wait.</b>
+    </div>
+  </div>
+
+  <section id="storyGate" class="start-overlay hidden">
+    <div class="start-card story-gate-card">
+      <small id="gateKicker">CHAPTER 02 · CINEMATIC AUDIO</small>
+      <h1 id="gateTitle">BEGIN NIGHT TWO</h1>
+      <p id="gateCopy">Start the chapter to enable the car sequence, narration, hospital ambience, and story sound.</p>
+      <button id="startStoryBtn" type="button">START CHAPTER</button>
+    </div>
+  </section>
+
+  <section id="cinematic" class="cinematic hidden">
+    <div class="bar top"></div><div class="bar bottom"></div><div id="cinemaFade" class="cinema-fade"></div>
+    <div class="cinema-copy">
+      <small id="cinemaKicker">CHAPTER 02</small>
+      <h1 id="cinemaTitle">SAINT MERCY</h1>
+      <p id="cinemaText"></p>
+    </div>
+    <button id="skipBtn" type="button" disabled>SKIP IN <b id="skipCount">3</b></button>
+  </section>
+
+  <section id="startOverlay" class="start-overlay hidden">
+    <div class="start-card">
+      <small id="startKicker">CHAPTER 02 · THE LOWER WARD</small>
+      <h1 id="startTitle">INSIDE SAINT MERCY</h1>
+      <p id="startCopy">The hospital is still drawing power from somewhere below. Find the source before the infected close in.</p>
+      <button id="enterGame" type="button">ENTER THE HOSPITAL</button>
+      <div class="controls">
+        <span><kbd>WASD</kbd> MOVE</span><span><kbd>MOUSE</kbd> LOOK</span><span><kbd>SHIFT</kbd> SPRINT</span>
+        <span><kbd>LMB</kbd> ATTACK</span><span><kbd>1 / 2</kbd> WEAPONS</span><span><kbd>WHEEL</kbd> SWITCH</span>
+        <span><kbd>E</kbd> INTERACT</span><span><kbd>B</kbd> BAG</span><span><kbd>F</kbd> FLASHLIGHT</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="hud" class="hud hidden">
+    <header class="hud-top">
+      <div class="chapter"><small>CHAPTER 02</small><b>SAINT MERCY</b></div>
+      <div class="objective"><small id="objectiveLabel">CURRENT OBJECTIVE</small><strong id="objectiveText">Reach reception</strong><div><i id="objectiveBar"></i></div></div>
+      <div class="hud-actions"><button id="langBtn" type="button">EN / AR</button><button id="pauseBtn" type="button">Ⅱ</button></div>
+    </header>
+
+    <div class="coin-counter"><span>◈</span><div><small>COINS</small><b id="coinCount">0</b></div></div>
+    <div id="subtitle" class="subtitle"><small id="speaker"></small><span id="subtitleText"></span></div>
+    <div id="interactPrompt" class="interact"><kbd>E</kbd><span id="interactText">INTERACT</span></div>
+    <div id="pointerHint" class="pointer-hint"><b>CLICK TO CONTROL</b><span>Move the mouse freely to look around</span></div>
+    <div id="crosshair" class="crosshair"><i></i><i></i><i></i><i></i></div>
+    <div id="damageFlash" class="damage-flash"></div><div id="hitMarker" class="hit-marker">×</div><div id="alertBadge" class="alert-badge">DETECTED</div>
+
+    <footer class="hud-bottom">
+      <div class="vitals">
+        <label><span>HEALTH</span><div><i id="healthBar"></i></div><b id="healthText">100</b></label>
+        <label class="stamina"><span>STAMINA</span><div><i id="staminaBar"></i></div><b id="staminaText">100</b></label>
+      </div>
+      <div class="mission-state"><strong id="missionState"></strong><small id="saveState"></small></div>
+      <div class="ammo"><small id="weaponName">TACTICAL SHOTGUN</small><div><strong id="ammoClip">8</strong><i id="ammoDivider">/</i><span id="ammoReserve">48</span></div><em id="reloadText">R TO RELOAD</em><div class="weapon-keys"><span id="slotOneHud" class="active">1 SHOTGUN</span><span id="slotTwoHud">2 HATCHET</span></div></div>
+    </footer>
+  </section>
+
+  <section id="inventoryOverlay" class="inventory-overlay hidden">
+    <article class="inventory-panel">
+      <header><div><small>SURVIVOR LOADOUT</small><h2>FIELD BAG</h2></div><button id="closeInventory" type="button">×</button></header>
+      <div class="inventory-grid">
+        <button id="inventoryShotgun" class="inventory-slot equipped" type="button"><span>1</span><div><small>PRIMARY</small><strong>TACTICAL SHOTGUN</strong><p id="bagAmmo">8 / 48 rounds</p></div></button>
+        <button id="inventoryHatchet" class="inventory-slot" type="button"><span>2</span><div><small>MELEE</small><strong>OLD HATCHET</strong><p>No ammunition required</p></div></button>
+        <div class="inventory-item"><span>✚</span><div><small>STATUS</small><strong id="bagHealth">100 HEALTH</strong></div></div>
+        <div class="inventory-item"><span>◈</span><div><small>CURRENCY</small><strong id="bagCoins">0 COINS</strong></div></div>
+      </div>
+      <footer>Press B to close · Mouse wheel or 1 / 2 to switch weapons</footer>
+    </article>
+  </section>
+
+  <section id="pauseOverlay" class="overlay hidden">
+    <article><small>GAME PAUSED</small><h2>PAUSE</h2><button id="resumeBtn" type="button">RESUME</button><button id="restartBtn" type="button">RESTART CHAPTER TWO</button><a href="index.html">RETURN TO MENU</a></article>
+  </section>
+
+  <section id="resultOverlay" class="overlay hidden">
+    <article><small id="resultKicker">MISSION COMPLETE</small><h2 id="resultTitle">WARD SECURED</h2><p id="resultText"></p>
+      <div class="stats"><span><small>KILLS</small><b id="statKills">0</b></span><span><small>COINS</small><b id="statCoins">0</b></span><span><small>TIME</small><b id="statTime">00:00</b></span></div>
+      <button id="replayBtn" type="button">PLAY AGAIN</button><a href="index.html">RETURN TO CHAPTERS</a>
+    </article>
+  </section>
+
+  <script src="js/zombie-pack-data.js"></script>
+  <script src="js/rifle-pack-data.js"></script>
+  <script src="js/hatchet-pack-data.js"></script>
+  <script src="js/chapter2.bundle.js"></script>
+</body>
+</html>
